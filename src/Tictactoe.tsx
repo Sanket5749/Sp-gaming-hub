@@ -42,7 +42,6 @@ function Tictactoe() {
     }, []);
 
     if (emptyBoxes.length > 0) {
-      // Try to find a winning move
       for (let i of emptyBoxes) {
         let testData = [...data];
         testData[i] = "O";
@@ -51,8 +50,6 @@ function Tictactoe() {
           return;
         }
       }
-
-      // Try to block player's winning move
       for (let i of emptyBoxes) {
         let testData = [...data];
         testData[i] = "X";
@@ -62,13 +59,11 @@ function Tictactoe() {
         }
       }
 
-      // Take center if available
       if (emptyBoxes.includes(4)) {
         makeMove(4);
         return;
       }
 
-      // Take a random corner or side
       const corners = [0, 2, 6, 8].filter(n => emptyBoxes.includes(n));
       if (corners.length > 0) {
         makeMove(corners[Math.floor(Math.random() * corners.length)]);
